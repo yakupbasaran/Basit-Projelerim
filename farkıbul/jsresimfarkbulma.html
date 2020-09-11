@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>FARKIBUL</title>
+<style>
+#alan{
+    background-color: aquamarine;
+    width:800px;
+    height:1000px;
+    padding:20px;
+    position:relative;
+    margin:0 auto;
+    text-align:center;
+    border-radius:10%;
+    border:4px solid;
+    border-color:burlywood;
+    box-shadow: 3px 3px 4px #000;
+}
+#btn1{
+    width:300px;
+    height:100px;
+    background-color: rgb(231, 220, 159);
+    color:chocolate;
+    font-size: 200%;
+    font-style: oblique;
+    border-radius: 50%;
+    border:4px solid;
+    border-color:burlywood;
+    position:relative;
+    margin:auto;
+    box-shadow: 6px 6px 6px #000;
+}
+#pics{
+    width:700px;
+    height:400px;
+    margin:0 auto;
+    border:4px solid;
+    border-color:rgb(104, 77, 43);
+    border-radius:5%;
+    box-shadow: 3px 3px 4px #000;
+}
+#syc{
+    border:3px solid;
+    border-radius: 50%;
+    width:50px;
+    height:50px;
+    margin:auto;
+    text-align:center;
+    color:black;
+    background-color: red;
+    font-size: 150%;
+    box-shadow: 3px 3px 4px #000;
+    font-weight:bold;
+}
+.yakalama{
+    width:500px;
+    height:30px;
+    border:3px solid;
+    border-color:burlywood;
+    background-color: chocolate;
+    color:white;
+    font-size:120%;
+    margin:0 auto;
+    text-align:center;
+}
+#score{
+    width:330px;
+    height:100px;
+    background-color: rgb(225, 226, 164);
+    border:2px solid;
+    border-color:rgb(192, 185, 166);
+    color:chocolate;
+    text-align:center;
+    border-radius: 25%;
+    margin:0 auto;
+    font-size:200%;
+    box-shadow: 3px 3px 4px #000;
+}
+#secim{
+    width:100px;
+    border:2px solid;
+    background-color:rgb(231, 220, 159);
+    color:chocolate;
+    border-color:chocolate;
+    position:relative;
+    margin:0 auto;
+    font-size:120%;
+    font-weight:bold;
+    box-shadow: 3px 3px 4px #000;
+}
+</style>
+</head>
+<body background="bg.jpg">
+<div id="alan">
+<img src="hazırmısın.png" id="pics" onclick="islem(event)"> <!--Resim alanı.-->
+<select id="secim" name="saniyeler" onchange="sayacdeger()"> <!--Saniye ayarlama alanı-->
+<option value="120">120</option>
+<option selected value="60">60</option>
+<option value="50">50</option>
+<option value="40">40</option>
+<option value="30">30</option>
+<option value="20">20</option>
+<option value="10">10</option>
+<option value="5">5</option>
+<option value="4">4</option>
+<option value="3">3</option>
+</select>
+<div id="kordinat"></div><br>
+<div id="syc" onclick="tekrar()"></div><br><!--Geri sayım alanı ve tekrar dene butonu-->
+<div id="simsek" class="yakalama"></div><!--Bulunan farkların ekrana yazılacakları alanlar-->
+<div id="damla" class="yakalama"></div>
+<div id="cali" class="yakalama"></div>
+<div id="cicek" class="yakalama"></div>
+<div id="sap" class="yakalama"></div>
+<div id="bulut" class="yakalama"></div>
+<br>
+<button id="btn1"  onclick="resmigetir(); kronometre();" value="">Oyunu Başlat</button> <!--Başlat butonu-->
+<br><br>
+<div id="score"> SKOR: </div> <!--Skor tablosu-->
+</div>
+<script type="text/javascript">
+var deger=0; var sayac;
+sayac=document.getElementById("secim").value;
+
+/*Dropdown menude yapılan seçim değiştiği zaman tetiklenecek bir fonksiyon.
+Yapılan seçimin değerini tut değişkenine atıyor.Tut değişkeninin değerinide sayac değişkenine atıyoruz.*/
+function sayacdeger(){
+var tut;
+tut=document.getElementById("secim");
+sayac=tut.options[tut.selectedIndex].value;
+}
+
+/*Oyunu Başlat butonuna basınca tetikleniyor.Birer saniye aralıklarla kronometre fonksiyonunu tetikliyor.*/
+function resmigetir(){
+    document.getElementById("pics").src="bul1.png";
+    setInterval("kronometre()",1000);
+    }
+/*Resim üzerinde fare ile tıkladığımız yerlerin koordinatlarını x ve y değişkenlerine atıyor.
+if sorguları ile resim üzerinde tıkladığımız yerlerin,
+iki resim arasındaki fark konumlarının koordinatları dahilinde olup olmadığını sorguluyor.
+Eğer koşullar sağlanıyor ise belirtilen alanların içerisine bildirimleri bastırıyor.*/
+    function islem(event){
+var x=event.clientX;
+var y=event.clientY;
+//document.getElementById("kordinat").innerHTML="X:"+x+" "+"Y:"+y;(Tıklanan yerlerin koordinatlarını görmek için.)
+if((x>564&&x<590)&&(y>60&&y<97)){
+document.getElementById("simsek").innerHTML="Şimşek bulundu.";
+deger++;
+}
+if((x>440&&x<464)&&(y>171&&y<200)){
+document.getElementById("damla").innerHTML="Damla bulundu.";
+deger++;
+}
+if((x>416&&x<541)&&(y>273&&y<311)){
+document.getElementById("cali").innerHTML="Çalı bulundu.";
+deger++;
+}
+if((x>562&&x<596)&&(y>266&&y<301)){
+document.getElementById("cali").innerHTML="Çalı bulundu.";
+deger++;
+}
+if((x>700&&x<744)&&(y>254&&y<278)){
+document.getElementById("cali").innerHTML="Çalı bulundu.";
+deger++;
+}
+if((x>602&&x<616)&&(y>229&&y<238)){
+document.getElementById("cicek").innerHTML="Çiçek bulundu.";
+deger++;
+}
+if((x>597&&x<616)&&(y>255&&y<277)){
+document.getElementById("sap").innerHTML="Sap bulundu.";
+deger++;
+}
+if((x>415&&x<511)&&(y>43&&y<59)){
+document.getElementById("bulut").innerHTML="Bulut bulundu.";
+deger++;
+}
+}
+/*sayac değeri sıfırdan büyükse yani süre bitmemiş ise belirtilen alana yazdırılıyor ve 1 azaltılıyor.
+Eğer sayac değeri -1'e eşitlenmiş ise deger değişkenini kontrol ediyor.
+deger değişkeninin içindeki değere göre score ekranına skoru yazdırıyor.
+Hepsi bulunmuş ise oyunu bitiriyor ve tekrar dene butonunu gösteriyor. */
+function kronometre(){
+    if(sayac>=0){
+   document.getElementById("syc").innerHTML=sayac;
+   sayac=sayac-1;
+   if(sayac==-1)
+   if(deger==0||deger==1||deger==2)
+   {
+   document.getElementById("score").innerHTML="Kötü :("+"<br>"+"SKORUNUZ:"+deger;
+   document.getElementById("score").style="color:red;";
+   }
+   else if(deger==3||deger==4)
+   {
+    document.getElementById("score").innerHTML="Orta :|"+"<br>"+"SKORUNUZ:"+deger; 
+   }
+   else if(deger==5)
+   {
+    document.getElementById("score").innerHTML="İyi :)"+"<br>"+"SKORUNUZ:"+deger;
+    document.getElementById("score").style="color:green;";
+   }
+   else
+   {
+    document.getElementById("score").innerHTML="HARİKA!"+"<br>"+"HEPSİ BULUNDU";
+   }
+}
+else
+{
+   document.getElementById("syc").innerHTML="TEKRAR DENE";
+   document.getElementById("syc").style="width:150px";
+   document.getElementById("pics").src="bitti.png";
+}
+}
+/*Her çağrıldığında sayfayı yenileyen fonksiyon.*/
+function tekrar(){
+    window.location.reload();
+}
+</script>
+</body>
+</html>
+
+
+
+
