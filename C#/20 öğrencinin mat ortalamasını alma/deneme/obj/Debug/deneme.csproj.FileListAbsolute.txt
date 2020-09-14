@@ -1,0 +1,6 @@
+C:\Users\Acer\Desktop\deneme\deneme\bin\Debug\deneme.exe.config
+C:\Users\Acer\Desktop\deneme\deneme\bin\Debug\deneme.exe
+C:\Users\Acer\Desktop\deneme\deneme\bin\Debug\deneme.pdb
+C:\Users\Acer\Desktop\deneme\deneme\obj\Debug\deneme.csprojResolveAssemblyReference.cache
+C:\Users\Acer\Desktop\deneme\deneme\obj\Debug\deneme.exe
+C:\Users\Acer\Desktop\deneme\deneme\obj\Debug\deneme.pdb
